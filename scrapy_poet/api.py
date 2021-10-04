@@ -88,7 +88,7 @@ def callback_for(page_cls: Type[ItemPage]) -> Callable:
     # To avoid a TypeError, we need to receive a list of unnamed arguments and
     # a dict of named arguments after our injectable.
     def parse(*args, page: page_cls, **kwargs):  # type: ignore
-        yield page.to_item()  # type: ignore
+        yield from page.to_item() # type: ignore
 
     setattr(parse, _CALLBACK_FOR_MARKER, True)
     return parse
